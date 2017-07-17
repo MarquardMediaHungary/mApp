@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:foreground="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/item_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/cover"
+                android:layout_width="@dimen/my_issues_item_width"
+                android:layout_height="@dimen/my_issues_item_height"
+                app:actualImageScaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/text_my_issues_list_item_date"
+                tools:text="2015. április" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/bg_dim_overlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_container"
+            android:layout_alignBottom="@id/item_container"
+            android:layout_alignLeft="@id/item_container"
+            android:layout_alignRight="@id/item_container"
+            android:background="@color/mGrey12"
+            android:alpha="0.5"/>
+
+        <RelativeLayout
+            android:id="@+id/download_overlay"
+            android:layout_width="@dimen/my_issues_item_width"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_container"
+            android:layout_alignBottom="@id/item_container"
+
+            android:background="@color/mGrey14"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ImageButton
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                android:layout_alignParentRight="true"
+                android:padding="15dp"
+                android:background="?attr/selectableItemBackgroundOval"
+                />
+
+            <com.onceapps.m.ui.widgets.LoadingLayout_
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:id="@+id/percent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress"
+                style="@style/text_download_overlay_percent"
+                tools:text="15%"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

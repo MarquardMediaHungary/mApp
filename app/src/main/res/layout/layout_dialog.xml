@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/dialog_margin"
+        android:background="?attr/colorPrimary"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/default_margin"
+        android:theme="@style/AppTheme.White">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/text_dialog_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/mGrey09"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            tools:text="Are you sure?" />
+
+        <TextView
+            android:id="@+id/message"
+            style="@style/text_dialog_message"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:textColor="@color/mGrey09"
+            tools:text="We're truly sorry!\nWe're working to recover your service as soon as possible!" />
+
+        <LinearLayout
+            android:id="@+id/button_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@android:id/button1"
+                style="@style/button_style_filled_white"
+                android:layout_height="@dimen/button_height"
+                android:layout_width="0px"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:text="@string/cancel"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:textColor="@color/mGrey09"/>
+
+            <Button
+                android:id="@android:id/button2"
+                style="@style/button_style_filled_white"
+                android:layout_height="@dimen/button_height"
+                android:layout_width="0px"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:text="@string/ok"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:textColor="@color/mGrey09"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
+

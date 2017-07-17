@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activites.ArticleListActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/pull_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <com.onceapps.m.ui.widgets.LoadingViewFlipper_
+                android:id="@+id/loading_flipper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/mWhite"
+                    android:clipToPadding="false" />
+
+            </com.onceapps.m.ui.widgets.LoadingViewFlipper_>
+
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <include
+            android:id="@+id/load_more"
+            layout="@layout/inc_loading_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <include layout="@layout/inc_appbar_layout" />
+
+        <com.onceapps.m.ui.widgets.LoadingLayout_
+            android:id="@+id/loading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include layout="@layout/inc_navigation_content" />
+
+</android.support.v4.widget.DrawerLayout>

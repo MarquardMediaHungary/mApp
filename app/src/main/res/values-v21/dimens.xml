@@ -1,0 +1,5 @@
+<resources>
+
+    <dimen name="header_margin_top">24dp</dimen>
+
+</resources>

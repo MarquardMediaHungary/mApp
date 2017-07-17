@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activites.ArticleListActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/pull_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
+                <RelativeLayout
+                    android:id="@+id/tabs_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/topics_tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/mWhite"
+                        android:visibility="gone"
+                        app:tabGravity="fill"
+                        app:tabIndicatorColor="@color/mGrey03"
+                        app:tabMode="scrollable"
+                        app:tabTextColor="@color/topic_tab_text_color"
+                        app:theme="@style/AppTheme.White" />
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/brands_tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/mWhite"
+                        android:visibility="gone"
+                        app:tabGravity="fill"
+                        app:tabMode="scrollable"
+                        app:theme="@style/AppTheme.White" />
+
+                </RelativeLayout>
+
+
+                <ViewFlipper
+                    android:id="@+id/loading_flipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/tabs_parent">
+
+                    <com.onceapps.m.ui.widgets.LoadingLayout_
+                        android:id="@+id/loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|top"
+                        android:layout_margin="@dimen/default_margin" />
+
+                    <TextView
+                        android:id="@+id/no_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|top"
+                        android:layout_margin="@dimen/default_margin"
+                        android:text="@string/no_content" />
+
+                    <LinearLayout
+                        android:id="@+id/add_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/default_margin"
+                            android:src="@drawable/ic_add_white" />
+
+                        <TextView
+                            android:id="@+id/add_text"
+                            style="@style/text_article_list_no_add"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/default_margin"
+                            android:gravity="center"
+                            android:text="@string/save_articles" />
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/mWhite"
+                        android:padding="@dimen/list_margin"
+                        android:clipToPadding="false" />
+
+                </ViewFlipper>
+
+            </RelativeLayout>
+
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <include
+            android:id="@+id/load_more"
+            layout="@layout/inc_loading_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/magazine_fab"
+            style="@style/MagazineFabStyle"
+            android:layout_gravity="bottom|right" />
+
+        <include layout="@layout/inc_appbar_layout" />
+
+        <com.onceapps.m.ui.widgets.LoadingLayout_
+            android:id="@+id/loading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include layout="@layout/inc_navigation_content" />
+
+</android.support.v4.widget.DrawerLayout>

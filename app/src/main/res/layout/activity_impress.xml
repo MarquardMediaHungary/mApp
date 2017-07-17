@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activites.BaseActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nested_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/mBlack"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <com.onceapps.m.ui.widgets.LoadingViewFlipper_
+                android:id="@+id/loading_flipper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--this is needed because webview height computation is buggy inside nestedscrollview -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="65dp">
+
+                    <WebView
+                        android:id="@+id/article_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </com.onceapps.m.ui.widgets.LoadingViewFlipper_>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <include layout="@layout/inc_appbar_article_layout" />
+
+        <include layout="@layout/inc_impress_bf" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include layout="@layout/inc_navigation_content" />
+
+</android.support.v4.widget.DrawerLayout>

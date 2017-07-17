@@ -1,0 +1,16 @@
+ui-test:
+  stage: test
+  script:
+    - pwd
+    - ./gradlew assembleDebug
+    - git clone http://gitlab.bfsdemo.hu/once/marquard-test.git ui-tests
+    - cp ./app/build/outputs/apk/app-dev-debug.apk ./ui-tests/
+    - cd ./ui-tests/
+    - adb uninstall hu.marquardmedia.m_app
+    - calabash-android run app-dev-debug.apk features/magazinok_login.feature
+    - adb uninstall hu.marquardmedia.m_app
+    - calabash-android run app-dev-debug.apk features/magazinok_forgot_pwd.feature
+    - adb uninstall hu.marquardmedia.m_app
+    - calabash-android run app-dev-debug.apk features/magazinok_visit_all_pages.feature
+  tags:
+    - build.once

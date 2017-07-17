@@ -1,0 +1,1290 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "MarquardCMS API",
+        "version": "0.5.3"
+    },
+    "host": "api.stage.marquard.hu",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/oauth2/token": {
+            "post": {
+                "summary": "Get a token for user/device with ouath2.\n",
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "grant_type",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "'client_credentials' or 'password'\n"
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth2 appropriate standard answer"
+                    }
+                }
+            }
+        },
+        "/oauth2/token-with-facebook": {
+            "post": {
+                "summary": "Login with an exist user, or create new account.\n",
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "description": "Facebook token\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth2 appropriate standard answer"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/oauth2/revoke": {
+            "delete": {
+                "summary": "Destroy access token.\n",
+                "responses": {
+                    "200": {
+                        "description": "Boolean"
+                    }
+                }
+            }
+        },
+        "/user": {
+            "post": {
+                "summary": "Create a new user.\n",
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Displayed name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "E-mail address",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "date_of_birth",
+                        "in": "query",
+                        "description": "YYYY-mm-dd",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "Gender (1 - woman, 2 - man)",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Signup error, or OAuth2 token"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Change user deteails.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Displayed name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "E-mail address",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "date_of_birth",
+                        "in": "query",
+                        "description": "YYYY-mm-dd",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "Gender (1 - woman, 2 - man)",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "give_push",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "True or false"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Get user details.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User access token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User details",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/forgotten-password": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "username",
+                        "description": "E-mail address",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "True or false"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/follows": {
+            "get": {
+                "summary": "Get followed brands and topics.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Filter by type (brand or topic)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of followed things.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Follows"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Follow a brand or topic.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Type (brand or topic)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "followed_id",
+                        "in": "query",
+                        "description": "Brand ID or topic ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of brands",
+                        "schema": {
+                            "$ref": "#/definitions/Follows"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/follows/{id}": {
+            "delete": {
+                "summary": "Unfollow a brand os topic.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Follow ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "True or false"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/favorites": {
+            "get": {
+                "summary": "Get favorite articles.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User access token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of favorites",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Favorites"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add an article to favorites.\n",
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "header",
+                        "description": "User access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "article_id",
+                        "in": "query",
+                        "description": "Article ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Favorite details",
+                        "schema": {
+                            "$ref": "#/definitions/Favorites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/favorites/{id}": {
+            "delete": {
+                "summary": "Remove an article from favorites.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Favorite ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "True or false"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/brand-list": {
+            "get": {
+                "summary": "Get all brands.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of brands",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Brand"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/topic-list": {
+            "get": {
+                "summary": "Get all topics.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "brand_id",
+                        "in": "query",
+                        "description": "Brand ID",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of topics",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Topic"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/magazine/{brand_id}": {
+            "get": {
+                "summary": "List all issues in selected brand.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "brand_id",
+                        "in": "path",
+                        "description": "Brand ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of issues",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Issue"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/magazine/issue/{issue_id}": {
+            "get": {
+                "summary": "Get issue details.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "issue_id",
+                        "in": "path",
+                        "description": "Issue ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Issue details",
+                        "schema": {
+                            "$ref": "#/definitions/Issue"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/magazine/issue/{issue_id}/contents": {
+            "get": {
+                "summary": "Get contents for issue.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "issue_id",
+                        "in": "path",
+                        "description": "Issue ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of contents",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/IssueContent"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/personal-article-list": {
+            "get": {
+                "summary": "Get all available article by user follows.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "from_time",
+                        "in": "query",
+                        "description": "Last article's date in ISO 8601 on prev feed page",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of articles",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Article"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/article-list": {
+            "get": {
+                "summary": "Get all available article from optional selected brand and/or topic.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "brand_id",
+                        "in": "query",
+                        "description": "Brand ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "topic_id",
+                        "in": "query",
+                        "description": "Topic ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "from_time",
+                        "in": "query",
+                        "description": "Last article's date in ISO 8601 on prev feed page",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of articles",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Article"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/article/{article_id}": {
+            "get": {
+                "description": "Get details of selected article.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "article_id",
+                        "in": "path",
+                        "description": "Article ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of article's datas",
+                        "schema": {
+                            "$ref": "#/definitions/Article"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/article/{article_id}/html": {
+            "get": {
+                "description": "Get HTML code of selected article.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "article_id",
+                        "in": "path",
+                        "description": "Article ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Article in HTML."
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/gallery/{gallery_id}": {
+            "get": {
+                "description": "Get details of selected article.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gallery_id",
+                        "in": "path",
+                        "description": "Gallery ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of gallery's datas",
+                        "schema": {
+                            "$ref": "#/definitions/Gallery"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/fb-video-list": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "An array of videos",
+                        "schema": {
+                            "$ref": "#/definitions/FbVideo"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/feed-embed": {
+            "get": {
+                "description": "Get feed embed item\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "topic_id",
+                        "in": "query",
+                        "description": "Filter by topic ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "brand_id",
+                        "in": "query",
+                        "description": "Filter by brand ID",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Feed embed details",
+                        "schema": {
+                            "$ref": "#/definitions/FeedEmbed"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/device-token": {
+            "post": {
+                "description": "Save device token for push messages.\n",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "User/Device access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Device token",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "True or false"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/impress": {
+            "get": {
+                "description": "Get impress in HTML format.\n",
+                "responses": {
+                    "200": {
+                        "description": "Impress in HTML."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "fb_id": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "date_of_birth": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "give_push": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Follows": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "brand / topic"
+                },
+                "followed_id": {
+                    "type": "integer",
+                    "description": "brand_id / topic_id"
+                }
+            }
+        },
+        "Favorites": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "article": {
+                    "$ref": "#/definitions/Article"
+                }
+            }
+        },
+        "Brand": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "print": {
+                    "type": "boolean",
+                    "description": "Has print content"
+                },
+                "online": {
+                    "type": "boolean",
+                    "description": "Has online content"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "logo": {
+                    "type": "object",
+                    "properties": {
+                        "white": {
+                            "type": "string"
+                        },
+                        "black": {
+                            "type": "string"
+                        },
+                        "cropped": {
+                            "type": "object",
+                            "properties": {
+                                "white": {
+                                    "type": "string"
+                                },
+                                "black": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Topic": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "color": {
+                    "type": "string"
+                }
+            }
+        },
+        "Issue": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "cover_url": {
+                    "type": "string"
+                },
+                "release_date": {
+                    "type": "string"
+                },
+                "generated_at": {
+                    "type": "string"
+                },
+                "pdf_in_package": {
+                    "type": "boolean"
+                },
+                "pdf_password": {
+                    "type": "string"
+                },
+                "package_size": {
+                    "type": "string"
+                },
+                "package_hash": {
+                    "type": "string"
+                },
+                "package_url": {
+                    "type": "string"
+                },
+                "brand": {
+                    "$ref": "#/definitions/Brand"
+                }
+            }
+        },
+        "IssueContent": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "lead": {
+                    "type": "string"
+                },
+                "topics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Topic"
+                    }
+                },
+                "html_page": {
+                    "type": "integer"
+                },
+                "pdf_page": {
+                    "type": "integer"
+                },
+                "file_url_small": {
+                    "type": "string"
+                }
+            }
+        },
+        "Article": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "lead": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "is_print": {
+                    "type": "boolean"
+                },
+                "topics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Topic"
+                    }
+                },
+                "brands": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Brand"
+                    }
+                },
+                "issue": {
+                    "$ref": "#/definitions/Issue"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "file_url_small": {
+                    "type": "string"
+                }
+            }
+        },
+        "Gallery": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "url": {
+                                "type": "string"
+                            },
+                            "desc": {
+                                "type": "string"
+                            },
+                            "source": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "FeedEmbed": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "'native_promo' or 'url'"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Position in feed"
+                },
+                "promo_title": {
+                    "type": "string",
+                    "description": "Title if type is 'native_promo'"
+                },
+                "promo_brand_id": {
+                    "type": "string",
+                    "description": "Promoted magazine's brand ID"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL if type is 'url'"
+                },
+                "height": {
+                    "type": "integer",
+                    "description": "URL frame's height in px if type is 'url'"
+                }
+            }
+        },
+        "FbVideo": {
+            "type": "object",
+            "properties": {
+                "video_id": {
+                    "type": "string"
+                },
+                "video_url": {
+                    "type": "string"
+                },
+                "video_deeplink": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "lead": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "image_url": {
+                    "type": "string"
+                },
+                "topics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Topic"
+                    }
+                },
+                "brands": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Brand"
+                    }
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

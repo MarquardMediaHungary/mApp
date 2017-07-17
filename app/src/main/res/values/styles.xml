@@ -1,0 +1,450 @@
+<resources>
+
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/launcher_activity_window_bg</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item> 
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
+        <item name="colorControlHighlight">@color/colorControlHighlight</item> 
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/mGrey02</item>
+        <item name="colorControlActivated">@color/mWhite</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:textColorPrimaryInverse">@color/textColorPrimaryInverse</item>
+        <item name="android:textColorSecondaryInverse">@color/textColorSecondaryInverse</item>
+        <item name="selectableItemBackground">@drawable/selectable_item_background</item>
+        <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
+        <item name="selectableItemBackgroundBorderless">@drawable/selectable_item_background</item>
+        <item name="selectableItemBackgroundOval">@drawable/selectable_item_background_oval</item>
+        <item name="themedHeaderBackButtonDrawable">@drawable/ic_header_back_white</item>
+        <item name="themedHeaderMenuButtonDrawable">@drawable/ic_header_menu_white</item>
+        <item name="themedMagazineIconDrawable">@drawable/ic_magazine_black
+        </item> <!-- TODO: WHITE!-->
+        <item name="themedBookmarkIconDrawable">@drawable/ic_bookmark_white</item>
+        <item name="themedSmallLogoDrawable">@drawable/ic_logo_small_white</item>
+        <item name="android:colorBackground">@color/colorPrimary</item>
+        <item name="button_bg">@drawable/button_bg_white</item>
+        <item name="button_text_color">@color/button_text_color_white</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:windowTranslucentStatus">false</item>
+    </style>
+
+    <style name="AppTheme.White" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryInverse</item> 
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkInverse</item> 
+        <item name="colorControlHighlight">@color/colorControlHighlight</item> 
+        <item name="colorAccent">@color/colorAccentInverse</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
+        <item name="textColorPrimary">@color/textColorPrimaryInverse</item>
+        <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>
+        <item name="android:textColorPrimaryInverse">@color/textColorPrimary</item>
+        <item name="android:textColorSecondaryInverse">@color/textColorSecondary</item>
+        <item name="themedHeaderBackButtonDrawable">@drawable/ic_header_back_black</item>
+        <item name="themedHeaderMenuButtonDrawable">@drawable/ic_header_menu_black</item>
+        <item name="themedMagazineIconDrawable">@drawable/ic_magazine_black</item>
+        <item name="themedBookmarkIconDrawable">@drawable/ic_bookmark_black</item>
+        <item name="themedSmallLogoDrawable">@drawable/ic_logo_small_black</item>
+        <item name="button_bg">@drawable/button_bg_black</item>
+        <item name="button_text_color">@color/button_text_color_black</item>
+        <item name="android:windowBackground">@color/colorPrimaryInverse</item>
+    </style>
+
+    <style name="AppTheme.Transparent" parent="AppTheme">
+        <item name="colorPrimary">@color/mTransparent</item> 
+        <item name="android:background">@color/mTransparent</item>
+    </style>
+
+    <style name="AppTheme.ModifyUser" parent="AppTheme">
+        <item name="colorControlActivated">@color/mGrey02</item>
+    </style>
+
+    <style name="TextAppearance.Widget.Event.Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="font">fonts/rubik_regular.ttf</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+    </style>
+
+    <style name="Marquard.DialogStyle" parent="android:Theme.Dialog">
+
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent_black_30</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+
+        <item name="colorPrimary">@color/colorPrimaryInverse</item> 
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkInverse</item> 
+        <item name="colorControlHighlight">@color/colorControlHighlight</item> 
+        <item name="colorAccent">@color/colorAccentInverse</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
+        <item name="textColorPrimary">@color/textColorPrimaryInverse</item>
+        <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>
+        <item name="android:textColorPrimaryInverse">@color/textColorPrimary</item>
+        <item name="android:textColorSecondaryInverse">@color/textColorSecondary</item>
+        <item name="button_bg">@drawable/button_bg_black</item>
+        <item name="button_text_color">@color/button_text_color_black</item>
+    </style>
+
+
+    <style name="MagazineFabStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/spacing_large</item>
+        <item name="android:src">@drawable/ic_magazine_white</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="borderWidth">0dp</item>
+        <item name="elevation">6dp</item>
+        <item name="pressedTranslationZ">12dp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="rippleColor">@color/colorControlHighlight</item>
+    </style>
+
+    <style name="AddIssueFabStyle" parent="MagazineFabStyle">
+        <item name="android:src">@drawable/ic_add_black</item>
+        <item name="backgroundTint">@color/colorPrimaryInverse</item>
+        <item name="rippleColor">@color/colorControlHighlightInverse</item>
+    </style>
+
+    <style name="text_normal">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="font">fonts/rubik_regular.ttf</item>
+    </style>
+
+    <style name="text_italic">
+        <item name="font">fonts/rubik_italic.ttf</item>
+    </style>
+
+    <style name="text_light">
+        <item name="font">fonts/rubik_300.ttf</item>
+    </style>
+
+    <style name="text_light_italic">
+        <item name="font">fonts/rubik_300italic.ttf</item>
+    </style>
+
+    <style name="text_medium">
+        <item name="font">fonts/rubik_500.ttf</item>
+    </style>
+
+    <style name="text_medium_italic">
+        <item name="font">fonts/rubik_500italic.ttf</item>
+    </style>
+
+    <style name="text_bold">
+        <item name="font">fonts/rubik_700.ttf</item>
+    </style>
+
+    <style name="text_bold_italic">
+        <item name="font">fonts/rubik_700italic.ttf</item>
+    </style>
+
+    <style name="menu_item">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/menu_item_height</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:paddingLeft">@dimen/menu_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/menu_horizontal_margin</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="text_menu_item" parent="text_light">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/menu_item_text_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/mWhite</item>
+    </style>
+
+    <style name="text_toolbar_title" parent="text_normal">
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text_extended_toolbar_title" parent="text_light">
+        <item name="android:textSize">40sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/mWhite</item>
+    </style>
+
+    <style name="text_extended_toolbar_title_followed_list" parent="text_extended_toolbar_title">
+        <item name="android:textSize">30sp</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:lines">2</item>
+    </style>
+
+    <style name="text_extended_toolbar_title_article" parent="text_article_list_item_title">
+
+    </style>
+
+    <style name="text_brand_topic_list_bottom_tabbar" parent="text_normal">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="text_topic_list_item" parent="text_normal">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text_followed_list_item" parent="text_normal">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/mGrey12</item>
+    </style>
+
+    <style name="text_article_list_item_brand" parent="text_bold">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="text_article_list_item_date" parent="text_normal">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/mGrey02</item>
+    </style>
+
+    <style name="text_article_header_date" parent="text_normal">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="text_article_list_item_title" parent="text_normal">
+        <item name="android:textSize">30sp</item>
+        <item name="android:maxLines">4</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/mWhite</item>
+    </style>
+
+    <style name="text_article_list_item_lead" parent="text_light">
+        <item name="android:textSize">@dimen/lead_text_size</item>
+        <item name="android:textColor">@color/mGrey09</item>
+        <item name="android:layout_marginBottom">@dimen/default_margin</item>
+    </style>
+
+    <style name="text_article_list_item_topic" parent="text_bold">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/mGrey09</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:paddingRight">12dp</item>
+    </style>
+
+    <style name="text_magazine_list_item_date" parent="text_normal">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+    </style>
+
+    <style name="text_my_issues_list_item_date" parent="text_magazine_list_item_date">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+
+    <style name="text_all_brands_magazine_list_item_date" parent="text_magazine_list_item_date">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+
+    <style name="text_all_brands_magazine_brand_name" parent="text_toolbar_title">
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="button_style" parent="text_normal">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/button_bg</item>
+        <item name="android:textColor">?attr/button_text_color</item>
+        <item name="android:paddingStart">@dimen/button_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/button_horizontal_padding</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="button_style_filled_white" parent="button_style">
+        <item name="android:background">@drawable/button_bg_filled_white</item>
+        <item name="android:textColor">@color/button_text_color_black</item>
+    </style>
+
+    <style name="delete_button_style" parent="button_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:drawableLeft">@drawable/ic_delete_white</item>
+        <item name="android:drawablePadding">@dimen/spacing_medium</item>
+        <item name="android:paddingStart">@dimen/spacing_medium</item>
+        <item name="android:paddingEnd">@dimen/spacing_medium</item>
+    </style>
+
+    <style name="text_add_issue" parent="text_light">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text_download_overlay_percent" parent="text_light">
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text_dialog_title" parent="text_medium">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text_dialog_message" parent="text_normal">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="marquard_progress" parent="Base.Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateOnly">true</item>
+        <item name="android:indeterminateDrawable">@drawable/loading_anim_list</item>
+        <item name="android:minHeight">30dp</item>
+    </style>
+
+    <style name="text_magazine_preview_date_style" parent="text_bold">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="text_magazine_preview_recommendation_style" parent="text_magazine_preview_date_style">
+        <item name="android:textColor">@color/mWhite</item>
+    </style>
+
+    <style name="text_magazine_preview_size_style" parent="text_normal">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/mGrey04</item>
+    </style>
+
+    <style name="text_content_list_item_title" parent="text_normal">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/mWhite</item>
+        <item name="android:lines">3</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="text_gallery_image_desc" parent="text_light">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/mWhite</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
+    <style name="text_gallery_brand" parent="text_bold">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="text_gallery_selected_page" parent="text_normal">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/mGrey02</item>
+    </style>
+
+    <style name="text_gallery_pages" parent="text_normal">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/mGrey07</item>
+    </style>
+
+    <style name="text_gallery_source" parent="text_italic">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/mGrey07</item>
+    </style>
+
+    <style name="text_start_title" parent="text_light">
+        <item name="android:textSize">49sp</item>
+        <item name="android:textColor">@color/mWhite</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingMultiplier">0.85</item>
+    </style>
+
+    <style name="text_start_text" parent="text_light">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/mWhite</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text_start_login" parent="text_normal">
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="fb_button_style" parent="button_style">
+        <item name="android:background">@drawable/button_bg_fb</item>
+        <item name="android:textColor">@color/mWhite</item>
+    </style>
+
+    <style name="text_start_login_grey" parent="text_start_login">
+        <item name="android:textColor">@color/mGrey04</item>
+    </style>
+
+    <style name="text_follow_no_content" parent="text_normal">
+        <item name="android:textColor">@color/mGrey12</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="text_article_list_no_add" parent="text_normal">
+        <item name="android:textColor">@color/mWhite</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="edittext_style" parent="Widget.AppCompat.EditText">
+        <item name="font">fonts/rubik_300.ttf</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_normal</item>
+        <item name="android:textColorHint">@color/mGrey04</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/default_margin</item>
+        <item name="android:layout_height">@dimen/edittext_height</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="login_edittext_style" parent="edittext_style">
+        <item name="android:layout_marginLeft">@dimen/default_margin</item>
+        <item name="android:layout_marginRight">@dimen/default_margin</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_medium</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="modify_user_edittext_style" parent="Widget.AppCompat.EditText">
+
+        <item name="font">fonts/rubik_300.ttf</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/mGrey12</item>
+        <item name="android:textColorHint">@color/mGrey04</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:layout_height">@dimen/edittext_height</item>
+        <item name="android:paddingTop">@dimen/spacing_large</item>
+        <item name="android:paddingBottom">@dimen/spacing_large</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:lines">1</item>
+        <item name="colorControlActivated">@color/mGrey12</item>
+    </style>
+
+    <style name="switch_style">
+        <item name="colorControlActivated">@color/mGrey12</item>
+        <item name="android:colorForeground">@color/mGrey04</item>
+    </style>
+
+</resources>

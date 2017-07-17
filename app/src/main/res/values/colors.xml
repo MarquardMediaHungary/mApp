@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/mGrey12</color>
+    <color name="colorPrimaryDark">@color/mBlack</color>
+    <color name="colorPrimaryLight">@color/mGrey09</color>
+    <color name="colorPrimaryInverse">@color/mWhite</color>
+    <color name="colorPrimaryDarkInverse">@color/colorPrimaryLight</color>
+    <color name="colorAccent">@color/mGreen</color>
+    <color name="colorAccentInverse">@color/mGreen</color>
+    <color name="colorControlHighlight">@color/mGrey13</color>
+    <color name="colorControlHighlightInverse">@color/mGrey09</color>
+    <color name="textColorPrimary">@color/mWhite</color>
+    <color name="textColorSecondary">@color/mGrey09</color>
+    <color name="textColorPrimaryInverse">@color/mGrey12</color>
+    <color name="textColorSecondaryInverse">@color/mGrey09</color>
+
+    <!-- colors defined in sketch -->
+    <color name="mWhite">@android:color/white</color>
+    <color name="mBlack">@android:color/black</color>
+    <color name="mGrey01">#F2F2F2</color>
+    <color name="mGrey02">#D8D8D8</color>
+    <color name="mGrey03">#CDCDCD</color>
+    <color name="mGrey04">#979797</color>
+    <color name="mGrey05">#868686</color>
+    <color name="mGrey06">#7E7D7D</color>
+    <color name="mGrey07">#6E6E6E</color>
+    <color name="mGrey08">#99000000</color>
+    <color name="mGrey09">#454242</color>
+    <color name="mGrey10">#2E332F</color>
+    <color name="mGrey11">#171616</color>
+    <color name="mGrey12">#151515</color>
+    <color name="mGrey13">#99CDCDCD</color>
+    <color name="mGrey14">#CC151515</color>
+    <color name="mGrey14_debug">#CC61CAFF</color>
+    <color name="mGrey15">#1A868686</color>
+    <color name="mPink">#C23F9D</color>
+    <color name="mRed">#C23F3F</color>
+    <color name="mBlue01">#4C3FC2</color>
+    <color name="mBlue02">#3B5998</color>
+    <color name="mBlue03">#61CAFF</color>
+    <color name="mGreen">#3FC299</color>
+    <color name="mYellow">#FFB717</color>
+    <color name="mTransparent">@android:color/transparent</color>
+
+    <color name="transparent_black_5">#0D000000</color>
+    <color name="transparent_black_10">#1A000000</color>
+    <color name="transparent_black_15">#26000000</color>
+    <color name="transparent_black_20">#33000000</color>
+    <color name="transparent_black_25">#40000000</color>
+    <color name="transparent_black_30">#4D000000</color>
+    <color name="transparent_black_35">#59000000</color>
+    <color name="transparent_black_50">#88000000</color>
+    <color name="transparent_black_70">#B3000000</color>
+    <color name="transparent_black_80">#CC000000</color>
+    <color name="transparent_black_85">#D8000000</color>
+
+</resources>

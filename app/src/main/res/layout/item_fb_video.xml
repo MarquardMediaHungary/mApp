@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_bg_box"
+        android:padding="@dimen/list_bg_padding">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:overlayImage="@drawable/article_overlay_gradient"
+            app:viewAspectRatio="@dimen/article_image_aspect_ratio_normal" />
+
+        <LinearLayout
+            android:id="@+id/text_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image"
+            android:background="@color/mWhite"
+            android:orientation="vertical"
+            android:padding="@dimen/default_margin">
+
+            <TextView
+                android:id="@+id/lead"
+                style="@style/text_article_list_item_lead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Úgy tűnik, az idő múlásával minden öltözködési szabály változik. Egy olyan világban, ahol egy szatén hálóing is lehet a tavaszi-nyári trend alapdarabja, nehéz eltalálni a határokat. " />
+
+            <LinearLayout
+                android:id="@+id/topics_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_container"
+            android:padding="@dimen/default_margin">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/place_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:viewAspectRatio="@dimen/article_image_aspect_ratio_normal" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/text_article_list_item_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Négy\nSoros\nSzöveg\nez\n(ja_várj)" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        style="@style/text_article_list_item_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/default_margin"
+                        tools:text="2016. március 11." />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/brand"
+                style="@style/text_article_list_item_brand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                tools:text="Joy" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</FrameLayout>

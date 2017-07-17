@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        style="@style/text_followed_list_item"
+        tools:text="@string/brands"
+        android:padding="@dimen/default_margin"
+        />
+
+    <ImageButton
+        android:id="@+id/unfollow_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close_black"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:background="?attr/selectableItemBackgroundOval"
+        android:padding="@dimen/default_margin"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_item_offset"
+        android:background="@color/mGrey01"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

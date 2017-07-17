@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    android:id="@+id/background"
+    android:background="@color/colorPrimary">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:background="@color/mGrey12"
+        android:visibility="invisible"
+        app:viewAspectRatio="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_topic_plus"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="@dimen/default_margin"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            style="@style/text_topic_list_item"
+            tools:text="@string/brands"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,144 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'io.fabric'
+apply plugin: 'android-native-dependencies'
+
+
+def AAVersion = '4.0.0'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'com.nabilhachicha:android-native-dependencies:0.1.3'
+        classpath 'com.google.gms:google-services:3.0.0'
+    }
+}
+
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+        resourcePackageName 'com.onceapps.m'
+    }
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "hu.marquardmedia.m_app"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 10030
+        versionName "1.0.30"
+        multiDexEnabled true
+        renderscriptTargetApi 23
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            moduleName "mupdf_java"
+        }
+    }
+
+    signingConfigs {
+        prod {
+            keyAlias 'secret'
+            keyPassword 'secret'
+            storeFile file('secret')
+            storePassword 'secret'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "2g"
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['jniLibs']
+        }
+        test {
+            manifest.srcFile 'AndroidManifestTest.xml'
+        }
+    }
+
+    productFlavors {
+        dev {
+            minSdkVersion 19
+        }
+        prod {
+            minSdkVersion 19
+        }
+    }
+}
+
+//native_dependencies {
+//    artifact 'com.onceapps:pdf:1.0+:armeabi-v7a'
+//}
+
+dependencies {
+    compile('com.onceapps:core:1.4.6') {
+        transitive = true;
+    }
+    compile 'javax.annotation:javax.annotation-api:1.2'
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+    apt "org.androidannotations:otto:$AAVersion"
+    compile 'com.facebook.fresco:fresco:0.7.0'
+    compile 'org.apache.commons:commons-compress:1.11'
+    compile 'org.apache.commons:commons-collections4:4.0'
+    compile 'commons-codec:commons-codec:1.10'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.android.support:palette-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:percent:23.4.0'
+    compile 'net.lingala.zip4j:zip4j:1.3.2'
+    compile 'org.rauschig:jarchivelib:0.7.1'
+    compile 'com.karumi:dexter:2.2.2'
+    compile 'io.apptik.multiview:layoutmanagers:0.0.3'
+    compile 'com.github.lsjwzh.RecyclerViewPager:lib:v1.1.0'
+    androidTestCompile('com.android.support:multidex-instrumentation:1.0.1') {
+        exclude group: 'com.android.support', module: 'multidex'
+    }
+    testCompile 'junit:junit:4.12'
+    androidTestCompile('com.android.support.test:runner:0.5') {
+        exclude group: 'com.support.android';
+    }
+    androidTestCompile('com.android.support.test:rules:0.5') {
+        exclude group: 'com.support.android';
+    }
+    androidTestCompile 'com.android.support:support-v4:23.4.0'
+    androidTestCompile 'com.android.support:appcompat-v7:23.4.0'
+    androidTestCompile 'com.android.support:support-annotations:23.4.0'
+    compile project(':mupdf')
+    compile('com.facebook.android:facebook-android-sdk:4.12.1') {
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.google.android.gms'
+    }
+
+    compile 'com.google.firebase:firebase-messaging:9.0.2'
+
+}
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="themedHeaderBackButtonDrawable" format="reference" />
+    <attr name="themedHeaderMenuButtonDrawable" format="reference" />
+    <attr name="themedSmallLogoDrawable" format="reference" />
+    <attr name="textColorPrimary" format="reference" />
+    <attr name="button_bg" format="reference" />
+    <attr name="button_text_color" format="reference" />
+    <attr name="themedMagazineIconDrawable" format="reference" />
+    <attr name="themedBookmarkIconDrawable" format="reference" />
+    <attr name="selectableItemBackgroundOval" format="reference" />
+</resources>

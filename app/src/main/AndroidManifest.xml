@@ -1,0 +1,204 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.onceapps.m">
+
+    <!--Normal-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!--Dangerous-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MainApplication_"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/m_app_name"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
+
+        <activity
+            android:name=".ui.activites.LauncherActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.activites.StartActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent" />
+
+        <activity
+            android:name=".ui.activites.LoginActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.activites.RegisterActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.activites.ForgotPasswordActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.activites.SettingsActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.ModifyUser"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.activites.FollowedListActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ui.activites.StoragePermissionRequestActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ui.activites.ArticleListActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.BrandListActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.White" />
+
+        <activity
+            android:name=".ui.activites.TopicListActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.MagazineListActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.MagazinePreviewActivity_"
+            android:label="@string/m_app_name"
+            android:parentActivityName=".ui.activites.ArticleListActivity_"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".ui.activites.MagazineArticleListActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.AllBrandsMagazineListActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.ArticleActivity_"
+            android:label="@string/m_app_name"
+            android:parentActivityName=".ui.activites.ArticleListActivity_"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".ui.activites.MyIssuesActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.MagazineActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.MagazinePDFActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.ImpressActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.GalleryActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.FbVideoListActivity_"
+            android:label="@string/m_app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activites.DetailActivity"
+            android:parentActivityName=".ui.activites.AllBrandsMagazineListActivity_">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activites.AllBrandsMagazineListActivity_" />
+        </activity>
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/m_app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver android:name=".listeners.MediaListener_">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_REMOVED" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".services.MFirebaseInstanceIDService_">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".services.MFirebaseMessagingService_">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="secret" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+    </application>
+
+</manifest>

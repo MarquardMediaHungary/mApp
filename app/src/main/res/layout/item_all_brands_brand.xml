@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/brand_name"
+        style="@style/text_all_brands_magazine_brand_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_large"
+        tools:text="@string/test_brand" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/magazines_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/brand_name"
+        android:background="@color/colorPrimary"
+        android:clipToPadding="false"
+        tools:listitem="@layout/item_all_brands_magazine" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/mBlack" />
+
+</RelativeLayout>

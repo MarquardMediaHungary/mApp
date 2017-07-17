@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/cover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            app:viewAspectRatio="0.752"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/text_magazine_list_item_date"
+            tools:text="2015. április" />
+
+        <Button
+            android:id="@+id/download_button"
+            android:layout_width="match_parent"
+            style="@style/button_style_filled_white"
+            android:text="@string/download_button_text"/>
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

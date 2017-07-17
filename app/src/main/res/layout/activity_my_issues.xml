@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activites.ArticleListActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ViewFlipper
+                android:id="@+id/isempty_flipper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include layout="@layout/inc_add_issue" />
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:layout_gravity="center"
+                        tools:listitem="@layout/item_my_issues"/>
+
+            </ViewFlipper>
+
+        </RelativeLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_issues_fab"
+            android:layout_gravity="bottom|right"
+            style="@style/AddIssueFabStyle"
+            android:visibility="gone"/>
+
+        <include layout="@layout/inc_appbar_layout" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include layout="@layout/inc_navigation_content"/>
+
+</android.support.v4.widget.DrawerLayout>
