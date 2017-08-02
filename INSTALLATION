@@ -1,3 +1,13 @@
 Installation guide
 
-   coming soon ...
+  1) Create your API endpoints following the documentation located in api/marquardcms.swagger.json. If you use YII2 framework, you'll find a quick guide to create API for your app in this link: http://www.yiiframework.com/wiki/748/building-a-rest-api-in-yii2-0/
+
+  2) Set up a new Facebook App. If you are new in Facebook app creation, read the official documentation at https://developers.facebook.com/docs/android/getting-started
+
+  3) Download and open the project file in Android Studio, download the dependencies and sync the project
+
+  4) In the main/res/values/strings.xml file set up the "facebook_app_id" value with your Facebook app ID
+
+  5) Set up your API endpoint URLs in the constant variables of main/java/com/onceapps/api/RestClient object.
+
+  6) Build the project.
